@@ -26,8 +26,19 @@ def tester(model, model_path, data_loader, tokenizer, device):
 
 if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    bmi = float(input('請輸入病人BMI: '))
-    age = float(input('請輸入病人年紀: '))
+    while True:
+        try:
+            bmi = float(input('請輸入病人BMI: '))
+        except:
+            print("請輸入數字!")
+            continue
+        try:
+            age = float(input('請輸入病人年紀: '))
+            break
+        except:
+            print("請輸入數字!\n現在重新輸入...\n")
+            continue
+        
     d1_score, d2_score = 0, 0
     if(bmi >= 30) :
         d1_score = 2
